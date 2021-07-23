@@ -7,8 +7,8 @@
 //
 
 import XCTest
-@testable import CountOnMe
 
+@testable import CountOnMe
 class SimpleCalcTests: XCTestCase {
 
     override func setUp() {
