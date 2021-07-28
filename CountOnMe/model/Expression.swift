@@ -13,10 +13,14 @@ class Expression {
     private var exp = String()
     
     private var canAddOperator: Bool {
-        return exp.last?.description != "+" 
-            && exp.last?.description != "-" 
-            && exp.last?.description != "*" 
-            && exp.last?.description != "/"
+        let ele = lastElement(exp)
+        return ele.last != "+" 
+            && ele.last != "-" 
+            && ele.last != "*" 
+            && ele.last != "/"
+    }
+    private func lastElement(_ ele: String) -> [String] {
+        return ele.split(separator: " ").map { "\($0)" }
     }
     
     private var expressionHaveResult: Bool {
@@ -42,14 +46,15 @@ class Expression {
         if expressionHaveResult {
             return ""
         }
-        return exp + char
+        exp = exp + char
+        return exp
     }
 
     public func enterOperation(_ ope: String) -> String? {
         if canAddOperator {
             switch ope {
             case "+":
-                exp = exp + " +"
+                exp = exp + " + "
             case "-":
                 exp = exp + " - "
             case "*":
