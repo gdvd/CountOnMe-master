@@ -20,13 +20,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.isEditable = false
-        print("A que coucou")
     }
     
     @IBAction func tappedArgButton(_ sender: UIButton) {
         switch sender.tag {
         case 0...9: // value 0-9
             print("value", sender.tag)
+            textView.text = expression.addArg(String(sender.tag))
         case 10: // Point
             print("Point")
         case 11: // Cancel
@@ -39,13 +39,29 @@ class ViewController: UIViewController {
     @IBAction func tappedOperationButton(_ sender: UIButton) {
         switch sender.tag {
         case 100: // Addition
-            print("Add")
+            if let result = expression.enterOperation("+") {
+                textView.text = result
+            } else {
+                showAlertOnlyOneOperator()
+            }
         case 101: //Substraction
-            print("Sub")
+            if let result = expression.enterOperation("-") {
+                textView.text = result
+            } else {
+                showAlertOnlyOneOperator()
+            }
         case 102: // Multiplication
-            print("Mul")
+            if let result = expression.enterOperation("*") {
+                textView.text = result
+            } else {
+                showAlertOnlyOneOperator()
+            }
         case 103: // Division
-            print("Div")
+            if let result = expression.enterOperation("/") {
+                textView.text = result
+            } else {
+                showAlertOnlyOneOperator()
+            }
         default:
             print("Nothing")
         }
@@ -53,8 +69,24 @@ class ViewController: UIViewController {
     
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         if sender.tag == 1000 { // Equal
-            print("EQUAL")
+            if let result = expression.enterOperation("=") {
+                textView.text = result
+            } else {
+                operationFailed()
+            }
         }
+    }
+    
+    func showAlertOnlyOneOperator(){
+        let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    func operationFailed(){
+        let alertVC = UIAlertController(title: "Impossible!", message: "Expression incorrecte !", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
 
 }

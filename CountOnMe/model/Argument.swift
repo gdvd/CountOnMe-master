@@ -18,8 +18,8 @@ struct Argument {
 //        let string = "🇩🇪€4€9"
 //        let matched = matches(for: "[0-9]", in: string)
 //        print("===1",matched)
-//        
-//        
+
+
 //        let str = "a311dadsddabc"
 //                 // 1. Create a regular expression rule
 //        let pattern = "^[a-z].*[a-z]$"
@@ -36,8 +36,8 @@ struct Argument {
 //            let string = (str as NSString).substring(with: result.range)
 //            print("===2",string)
 //        }
-//        
-//        
+
+
 //        do {
 //         let input = "My name is Taylor Swift"
 //         let regex = try NSRegularExpression(pattern: "My name is (.*)", options: NSRegularExpression.Options.caseInsensitive)
@@ -72,7 +72,6 @@ struct Argument {
             return []
         }
     }
-
 }
 extension String {
     func matches(regex: String) -> [String] {
