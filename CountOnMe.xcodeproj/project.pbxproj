@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		127F46B126B5A84300A391CD /* Ext+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F46B026B5A84300A391CD /* Ext+Double.swift */; };
 		129E79FF26A86284002660EF /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129E79FE26A86284002660EF /* Expression.swift */; };
 		129E7A0326A8631F002660EF /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129E7A0226A8631F002660EF /* Operation.swift */; };
 		12DDFA6126AAFEAE005666F5 /* CountOnMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DDFA6026AAFEAE005666F5 /* CountOnMeTests.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		127F46B026B5A84300A391CD /* Ext+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Double.swift"; sourceTree = "<group>"; };
 		129E79FE26A86284002660EF /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		129E7A0226A8631F002660EF /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		12DDFA5E26AAFEAE005666F5 /* CountOnMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				129E79FC26A86253002660EF /* view */,
 				1FA43BD9224E569A00F565CB /* Assets.xcassets */,
 				1FA43BDE224E569A00F565CB /* Info.plist */,
+				127F46B026B5A84300A391CD /* Ext+Double.swift */,
 				129E79FD26A8625D002660EF /* model */,
 			);
 			path = CountOnMe;
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				127F46B126B5A84300A391CD /* Ext+Double.swift in Sources */,
 				1FA43BD5224E569900F565CB /* ViewController.swift in Sources */,
 				1FA43BD3224E569900F565CB /* AppDelegate.swift in Sources */,
 				129E7A0326A8631F002660EF /* Operation.swift in Sources */,

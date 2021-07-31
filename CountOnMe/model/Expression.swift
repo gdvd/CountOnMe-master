@@ -14,7 +14,7 @@ class Expression {
     //MARK:- Expression
     public var exp = String()
     
-    //MARK: - Verifications
+    //MARK: - Control
     private var canAddOperator: Bool {
         let ele = lastElement(exp)
         return ele.last != "+" 
@@ -37,15 +37,16 @@ class Expression {
     }
     
     private var expressionIsCorrect: Bool {
-        return exp.last != "+" 
-            && exp.last != "-" 
-            && exp.last != "*" 
-            && exp.last != "/"
+        let ele = elements(exp)
+        return ele.last != "+" 
+            && ele.last != "-" 
+            && ele.last != "*" 
+            && ele.last != "/"
     }
     
     //MARK: - Around expression
     private func elements(_ ele: String) -> [String] {
-        return ele.components(separatedBy: " ")
+        return ele.split(separator: " ").map { "\($0)" }
     }
  
     public func reset(){
@@ -86,7 +87,7 @@ class Expression {
 
     //MARK: - Compute expression
     public func enterEqual() -> express {
-        if !expressionIsCorrect || !expressionHaveEnoughElement {
+        if !(expressionIsCorrect && expressionHaveEnoughElement ) {
             return express.failure(.errorExpression)
         }
         
@@ -98,7 +99,8 @@ class Expression {
                             case .failure(let error):
                                 return express.failure(error)
                             case .success(let  result):
-                                return express.success(result)
+                                exp = exp + " = " + result
+                                return express.success(exp)
                         }
                 }
     }
@@ -124,6 +126,9 @@ class Expression {
         }
         return express.success(operationsToReduce.joined(separator: " "))
     }
+    
+    // Arondi
+    // let y = Double(round(1000*x)/1000)
     
     //MARK: Multiplication & Division
     private func multiplicationAndDivision(_ opeToReduce: [String]) -> express {
@@ -155,7 +160,7 @@ class Expression {
                     .filter { !indexToDelete.contains($0.offset) }
                     .map { $0.element }
                 
-                operationsToReduce.insert("\(result)", at: position - 1)
+                operationsToReduce.insert("\(String(format:"%.2f", result))", at: position - 1)
                 
             } else {
                 position += 2
