@@ -20,5 +20,15 @@ class ExpressionTests: XCTestCase {
     func testExpression(){
         XCTAssertNotNil(expression)
     }
+    
+    /*
+     public func reset()
+
+     public func addArg(_ char: String) -> express
+
+     public func enterOperation(_ ope: String) -> express
+
+     public func enterEqual() -> express
+     */
 
 }

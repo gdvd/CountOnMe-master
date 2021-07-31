@@ -6,26 +6,12 @@
 //  Copyright © 2021 Vincent Saluzzo. All rights reserved.
 //
 
-import Foundation
-
-
-enum ope {
-    case add, sub, mul, div, err
+enum expressionError {
+    case errorOperator
+    case errorExpression
+    case impossibleDivisionByZero
 }
-
-struct Operation {
-    func define(charac: String) -> ope {
-        switch charac{
-        case "+":
-            return ope.add
-        case "-":
-            return ope.sub
-        case "*":
-            return ope.mul
-        case "/":
-            return ope.div
-        default:
-            return ope.err
-        }
-    }
+enum express {
+    case success(String)
+    case failure(expressionError)
 }
