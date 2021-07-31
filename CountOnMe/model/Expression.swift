@@ -12,7 +12,7 @@ import UIKit
 class Expression {
     
     //MARK:- Expression
-    private var exp = String()
+    public var exp = String()
     
     //MARK: - Verifications
     private var canAddOperator: Bool {
@@ -44,10 +44,6 @@ class Expression {
     }
     
     //MARK: - Around expression
-    private func expressionToString() -> String {
-        return exp
-    }
-
     private func elements(_ ele: String) -> [String] {
         return ele.components(separatedBy: " ")
     }

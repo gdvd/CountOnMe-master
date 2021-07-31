@@ -11,7 +11,7 @@ enum expressionError {
     case errorExpression
     case impossibleDivisionByZero
 }
-enum express {
+enum express: Equatable {
     case success(String)
     case failure(expressionError)
 }
