@@ -12,7 +12,7 @@ import UIKit
 class Expression {
     
     //MARK:- Expression
-    public var exp = String()
+    private var exp = String()
     
     //MARK: - Control
     private var canAddOperator: Bool {
@@ -49,8 +49,9 @@ class Expression {
         return ele.split(separator: " ").map { "\($0)" }
     }
  
-    public func reset(){
+    public func reset() -> express {
         exp = ""
+        return express.success(exp)
     }
    
     public func addArg(_ char: String) -> express {

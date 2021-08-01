@@ -37,10 +37,14 @@ class ViewController: UIViewController {
         case 10: // Point
             print("Point")
         case 11: // Cancel
-            expression.reset()
-            textView.text = ""
+            switch expression.reset() {
+            case .success(let  result):
+                textView.text = result
+            case .failure(let  error):
+                shoWError(error)
+            }
         default:
-            print("Nothing")
+            fatalError("Error : tappedArgButton")
         }
     }
     
@@ -75,7 +79,7 @@ class ViewController: UIViewController {
                 textView.text = result
             }
         default:
-            print("Error : tappedOperationButton()")
+            fatalError("Error : tappedOperationButton()")
         }
     }
     
@@ -85,7 +89,7 @@ class ViewController: UIViewController {
                 case .failure(let error):
                     shoWError(error)
                 case .success(let  result):
-                    expression.reset()
+                    let _ = expression.reset()
                     textView.text = result
             }
         }
@@ -99,7 +103,7 @@ class ViewController: UIViewController {
         case .errorExpression:
             operationFailed()
         case .impossibleDivisionByZero:
-            operationFailed()
+            impossibleDivisionByZero()
         }
     }
     func showAlertOnlyOneOperator(){
@@ -109,6 +113,11 @@ class ViewController: UIViewController {
     }
     func operationFailed(){
         let alertVC = UIAlertController(title: "Impossible!", message: "Expression incorrecte !", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    func impossibleDivisionByZero(){
+        let alertVC = UIAlertController(title: "Impossible!", message: "La division par zéro est impossible !", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }

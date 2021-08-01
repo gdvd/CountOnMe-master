@@ -43,8 +43,7 @@ class ExpressionTests: XCTestCase {
     
     func testGivenInit_When0AndReset_ThenResultEmpty(){
         XCTAssertEqual(expression.addArg("0"), express.success("0"))
-        expression.reset()
-        XCTAssertEqual(expression.exp, "")
+        XCTAssertEqual(expression.reset(), express.success(""))
     }
 
 }
