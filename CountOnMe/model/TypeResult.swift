@@ -10,6 +10,7 @@ enum expressionError {
     case errorOperator
     case errorExpression
     case impossibleDivisionByZero
+    case errorOnlyOnePoint
 }
 enum express: Equatable {
     case success(String)

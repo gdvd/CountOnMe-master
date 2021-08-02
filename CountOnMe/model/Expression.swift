@@ -44,6 +44,10 @@ class Expression {
             && ele.last != "/"
     }
     
+    private func expressionHavePoint(_ arg: String) -> Bool {
+        return arg.firstIndex(of: ".") != nil
+    }
+    
     //MARK: - Around expression
     private func elements(_ ele: String) -> [String] {
         return ele.split(separator: " ").map { "\($0)" }
@@ -61,8 +65,27 @@ class Expression {
         exp = exp + char
         return express.success(exp)
     }
+    
+    public func addPoint() -> express {
+        if let lastelement = lastElement(exp).last {
+            if canAddOperator {
+                if expressionHavePoint(lastelement){
+                    return express.failure(.errorOnlyOnePoint)
+                } else {
+                    exp = exp + "."
+                    return express.success(exp)
+                }
+            }else{
+                exp = exp + "0."
+                return express.success(exp)
+            }
+        }else{
+            exp = exp + "0."
+            return express.success(exp)
+        }
+    }
 
-    //MARK: - Make operation in expression
+    //MARK: - Make operations in expression
     public func enterOperation(_ ope: String) -> express {
         if canAddOperator {
             switch ope {

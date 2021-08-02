@@ -21,8 +21,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="T2H-yn-nBB">
                                 <rect key="frame" x="20" y="52" width="374" height="328.5"/>
                                 <color key="backgroundColor" red="0.20003848190504239" green="0.46342921422809114" blue="0.60497977244875223" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">1+1=2
-456</string>
                                 <color key="textColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="46"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
