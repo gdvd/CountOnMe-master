@@ -28,6 +28,39 @@ class ExpressionTests: XCTestCase {
         XCTAssertEqual(expression.addArg("2"), express.success("1 + 2"))
         XCTAssertEqual(expression.enterEqual(), express.success("1 + 2 = 3.0"))
     }
+    // success : 1 - 2 = 3.0
+    func testGivenInit_WhenSoustract1And2_ThenResultIsNegOne(){
+        XCTAssertEqual(expression.addArg("1"), express.success("1"))
+        XCTAssertEqual(expression.enterOperation("-"), express.success("1 - "))
+        XCTAssertEqual(expression.addArg("2"), express.success("1 - 2"))
+        XCTAssertEqual(expression.enterEqual(), express.success("1 - 2 = -1.0"))
+    }
+    
+    // success : 1 + 2 * 2 + 3 = 3.0
+    func testGivenInit_WhenAdd1And2Mul2Add3_ThenResultIsHeight(){
+        XCTAssertEqual(expression.addArg("1"), express.success("1"))
+        XCTAssertEqual(expression.enterOperation("+"), express.success("1 + "))
+        XCTAssertEqual(expression.addArg("2"), express.success("1 + 2"))
+        XCTAssertEqual(expression.enterOperation("*"), express.success("1 + 2 * "))
+        XCTAssertEqual(expression.addArg("2"), express.success("1 + 2 * 2"))
+        XCTAssertEqual(expression.enterOperation("+"), express.success("1 + 2 * 2 + "))
+        XCTAssertEqual(expression.addArg("3"), express.success("1 + 2 * 2 + 3"))
+        XCTAssertEqual(expression.enterEqual(), express.success("1 + 2 * 2 + 3 = 8.0"))
+    }
+    
+    // success : 1 + 2 / 4 * 3 + 3 = 5.5
+    func testGivenInit_WhenAdd1And2Div4Mul3Add3_ThenResultIsHeight(){
+        XCTAssertEqual(expression.addArg("1"), express.success("1"))
+        XCTAssertEqual(expression.enterOperation("+"), express.success("1 + "))
+        XCTAssertEqual(expression.addArg("2"), express.success("1 + 2"))
+        XCTAssertEqual(expression.enterOperation("/"), express.success("1 + 2 / "))
+        XCTAssertEqual(expression.addArg("4"), express.success("1 + 2 / 4"))
+        XCTAssertEqual(expression.enterOperation("*"), express.success("1 + 2 / 4 * "))
+        XCTAssertEqual(expression.addArg("3"), express.success("1 + 2 / 4 * 3"))
+        XCTAssertEqual(expression.enterOperation("+"), express.success("1 + 2 / 4 * 3 + "))
+        XCTAssertEqual(expression.addArg("3"), express.success("1 + 2 / 4 * 3 + 3"))
+        XCTAssertEqual(expression.enterEqual(), express.success("1 + 2 / 4 * 3 + 3 = 5.5"))
+    }
     
     // failure : 0 + *
     func testGivenInit_When0PlusAndMultiply_ThenResultIsFailed(){
