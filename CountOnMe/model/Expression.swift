@@ -52,9 +52,15 @@ class Expression {
     private func elements(_ ele: String) -> [String] {
         return ele.split(separator: " ").map { "\($0)" }
     }
- 
+    
     public func reset() -> express {
         exp = ""
+        return express.success(exp)
+    }
+    
+    public func cancel() -> express {
+        let elements = (exp.split(separator: " ").map { "\($0)" }).dropLast()
+        exp = elements.joined(separator: " ")
         return express.success(exp)
     }
    
@@ -98,7 +104,7 @@ class Expression {
             case "/":
                 exp = exp + " / "
             default:
-                print("Error : invalid operator")
+                fatalError("Error : invalid operator")
             }
         } else {
             return express.failure(.errorExpression)
@@ -150,10 +156,7 @@ class Expression {
         }
         return express.success(operationsToReduce.joined(separator: " "))
     }
-    
-    // Arondi
-    // let y = Double(round(1000*x)/1000)
-    
+     
     //MARK: Multiplication & Division
     private func multiplicationAndDivision(_ opeToReduce: [String]) -> express {
         var operationsToReduce = opeToReduce

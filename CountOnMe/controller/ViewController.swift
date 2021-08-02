@@ -42,7 +42,7 @@ class ViewController: UIViewController {
                     textView.text = result
             }
         case 11: // Cancel
-            switch expression.reset() {
+            switch expression.cancel() {
             case .success(let  result):
                 textView.text = result
             case .failure(let  error):
@@ -70,14 +70,14 @@ class ViewController: UIViewController {
             case .success(let  result):
                 textView.text = result
             }
-        case 102:
+        case 102: // Multiplication
             switch expression.enterOperation("*") {
             case .failure(let error):
                 shoWError(error)
             case .success(let  result):
                 textView.text = result
             }
-        case 103:
+        case 103: // Division
             switch expression.enterOperation("/") {
             case .failure(let error):
                 shoWError(error)
