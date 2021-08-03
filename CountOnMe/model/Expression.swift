@@ -61,6 +61,7 @@ class Expression {
     public func cancel() -> express {
         let elements = (exp.split(separator: " ").map { "\($0)" }).dropLast()
         exp = elements.joined(separator: " ")
+        if !expressionIsCorrect {exp += " "}
         return express.success(exp)
     }
    

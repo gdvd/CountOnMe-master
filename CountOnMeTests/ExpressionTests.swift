@@ -104,5 +104,18 @@ class ExpressionTests: XCTestCase {
         XCTAssertEqual(expression.addPoint(), express.success("1 + 0."))
         XCTAssertEqual(expression.enterEqual(), express.success("1 + 0. = 1.0"))
     }
+    
+    // Cancel
+    func testGivenInit_WhenAdd1AndPlusAnd2Cancel4_ThenResultEmpty(){
+        XCTAssertEqual(expression.addArg("1"), express.success("1"))
+        XCTAssertEqual(expression.enterOperation("+"), express.success("1 + "))
+        XCTAssertEqual(expression.addArg("2"), express.success("1 + 2"))
+        XCTAssertEqual(expression.cancel(), express.success("1 + "))
+        XCTAssertEqual(expression.addArg("3"), express.success("1 + 3"))
+        XCTAssertEqual(expression.cancel(), express.success("1 + "))
+        XCTAssertEqual(expression.cancel(), express.success("1"))
+        XCTAssertEqual(expression.cancel(), express.success(""))
+        XCTAssertEqual(expression.cancel(), express.success(""))
+    }
 
 }
