@@ -117,5 +117,12 @@ class ExpressionTests: XCTestCase {
         XCTAssertEqual(expression.cancel(), express.success(""))
         XCTAssertEqual(expression.cancel(), express.success(""))
     }
-
+    // 1111 = -> failure.errorExpression
+    func testGivenInit_WhenAdd1AndEqual_ThenFailure(){
+        XCTAssertEqual(expression.addArg("1"), express.success("1"))
+        XCTAssertEqual(expression.addArg("1"), express.success("11"))
+        XCTAssertEqual(expression.addArg("1"), express.success("111"))
+        XCTAssertEqual(expression.addArg("1"), express.success("1111"))
+        XCTAssertEqual(expression.enterEqual(), express.failure(.errorExpression))
+    }
 }

@@ -101,7 +101,7 @@ class Expression {
             case "/":
                 exp = exp + " / "
             default:
-                fatalError("Error : invalid operator")
+                return express.failure(.errorExpression)
             }
         } else {
             return express.failure(.errorExpression)
@@ -142,7 +142,7 @@ class Expression {
             switch operand {
             case "+": result = left + right
             case "-": result = left - right
-            default: fatalError("Unknown operator !")
+            default: result = 0
             }
             
             operationsToReduce = Array(operationsToReduce.dropFirst(3))

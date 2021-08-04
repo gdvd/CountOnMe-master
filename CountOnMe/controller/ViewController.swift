@@ -106,35 +106,19 @@ class ViewController: UIViewController {
     fileprivate func shoWError(_ error: (expressionError)) {
         switch error {
         case .errorOperator:
-            showAlertOnlyOneOperator()
+            operationError("operateur est déja mis !")
         case .errorExpression:
-            operationFailed()
+            operationError("Expression incorrecte !")
         case .impossibleDivisionByZero:
-            impossibleDivisionByZero()
+            operationError("La division par zéro est impossible !")
         case .errorOnlyOnePoint:
-            errorOnlyOnePoint()
+            operationError("Un seul point par argument !")
         }
-    }
-    func showAlertOnlyOneOperator(){
-        let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
+    }    
+    func operationError(_ msg: String){
+        let alertVC = UIAlertController(title: "Impossible!", message: msg, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
-    func operationFailed(){
-        let alertVC = UIAlertController(title: "Impossible!", message: "Expression incorrecte !", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
-    func impossibleDivisionByZero(){
-        let alertVC = UIAlertController(title: "Impossible!", message: "La division par zéro est impossible !", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
-    func errorOnlyOnePoint(){
-        let alertVC = UIAlertController(title: "Impossible!", message: "Un seul point par argument !", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
-
 }
 
